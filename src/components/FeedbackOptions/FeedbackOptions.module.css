@@ -1,0 +1,24 @@
+.feedbackList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.button {
+  display: block;
+  text-transform: capitalize;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #256799;
+  padding: 3px 10px;
+  border-radius: 3px;
+  line-height: 1.3;
+  transition: background-color 250ms linear;
+}
+
+.button:hover {
+  background-color: #add1ec;
+}
