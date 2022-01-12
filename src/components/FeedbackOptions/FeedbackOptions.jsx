@@ -1,6 +1,7 @@
+import PropTypes from "prop-types";
 import s from "./FeedbackOptions.module.css"
 
-export default function FeedbackOptions({ options, onLeaveFeedback }) {
+function FeedbackOptions({ options, onLeaveFeedback }) {
     return <>
         <ul className={s.feedbackList}>
             {Object.keys(options).map(option => {
@@ -8,4 +9,15 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
             })}
         </ul>
     </>
- }
+}
+ 
+FeedbackOptions.propTypes = {
+    options: PropTypes.shape({
+        bad: PropTypes.number,
+        good: PropTypes.number,
+        neutral: PropTypes.number
+    }),
+    onLeaveFeedback: PropTypes.func
+}
+
+export default FeedbackOptions;

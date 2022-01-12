@@ -23,17 +23,20 @@ class App extends React.Component {
   };
 
   countPositiveFeedbackPercentage = () => {
+    let { good, bad } = this.state;
     let positivePercentage = 0;
-    if (this.state.good !== 0 && this.state.bad !== 0) {
-      positivePercentage =
-        (this.state.good / (this.state.bad + this.state.good)) * 100;
-    } else if (this.state.bad === 0) {
+
+    if (good !== 0 && bad !== 0) {
+      positivePercentage = (good / (bad + good)) * 100;
+    } else if (bad === 0 && good > 0) {
       positivePercentage = 100;
     }
     return Math.round(positivePercentage * 100) / 100;
   };
 
   render() {
+    let { good, neutral, bad } = this.state;
+
     return (
       <>
         <Section title="Please leave feedback">
@@ -48,9 +51,9 @@ class App extends React.Component {
             <Notification message="There is no feedback" />
           ) : (
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
+              good={good}
+              neutral={neutral}
+              bad={bad}
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
